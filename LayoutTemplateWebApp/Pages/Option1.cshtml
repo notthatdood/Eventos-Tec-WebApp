@@ -1,0 +1,136 @@
+﻿@page
+@model LayoutTemplateWebApp.Pages.Option1Model
+@{
+    ViewData["Title"] = "Calendario de Eventos";
+}
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Principal</title>
+    <!-- Enlace a Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="site.css">
+    <script src="site.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-12 text-center mt-5">
+                <h1 class="display-1">Calendario de Eventos</h1>
+            </div>
+        </div>
+        <!-- Botones -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-primary">Categoría</button>
+                    <button type="button" class="btn btn-primary">Fechas</button>
+                    <button type="button" class="btn btn-primary">Ubicaciones</button>
+                </div>
+            </div>
+        </div>
+
+
+        @* Nueva fila con margin top de 4*@
+        <div class="row mt-4">
+            @foreach (var dateEvents in Model.GroupedEvents)
+            {
+                @*<div class="col-md-12">*@
+                IDictionary<int, string> ubicaciones = new Dictionary<int, string>();
+                ubicaciones.Add(1, "B3-06");
+
+                ubicaciones.Add(2, "Centro de las Artes");
+
+                ubicaciones.Add(3, "Piscina TEC");
+
+                ubicaciones.Add(4, "Cancha Multiusos");
+
+                ubicaciones.Add(5, "Auditorio de Centro de Investigación en Computación");
+
+                IDictionary<int, string> imagenes = new Dictionary<int, string>();
+                imagenes.Add(1, "https://www.zegelipae.edu.pe/sites/default/files/styles/hero_banner_node/public/BLOG/Computaci%C3%B3n%20e%20Inform%C3%A1tica/INFORMATICA-BANNER-DESKTOP.jpg");
+
+                imagenes.Add(2, "https://www.tec.ac.cr/sites/default/files/media/img/body/centro_artes_opt.jpg");
+
+                imagenes.Add(3, "https://www.tec.ac.cr/sites/default/files/media/img/piscina.jpg");
+
+                imagenes.Add(4, "https://www.tec.ac.cr/sites/default/files/media/img/multiusos_tec.jpg");
+
+                imagenes.Add(5, "https://www.tec.ac.cr/sites/default/files/media/img/body/cic.png");
+
+                IDictionary<int, string> categorias = new Dictionary<int, string>();
+                categorias.Add(1, "Charla");
+                categorias.Add(2, "Deportes");
+                categorias.Add(3, "Música");
+
+
+                <h2 class="date-title display-4">@dateEvents.Key.ToLongDateString()</h2>
+                var column_number = 0;
+                <div class="container">
+                    @* Esta es la clase que agrupa los eventos de la fecha. Se trata cada fecha como una única *@
+                    <div class="row">
+
+                        @foreach (var evento in dateEvents.Value)
+                        {
+                            if (column_number == 4)
+                            {
+                                @* Salta a la siguiente línea *@
+                                <div class="w-100"></div>
+                                column_number = 0;
+                            }
+
+                            @* <div class="col-md-3"> *@
+                            <div class="col-lg-3 mb-4 d-flex ">
+                                @* mb-4 agrega margin bottom tamaño 4. La clase event se puede cambiar, es propia.*@
+                                <div class="container mb-4 event-card-container" data-event-id="@evento.idEvent" onclick="showPopup(@evento.idEvent)">
+
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            
+                                           
+                                             <img src="@imagenes[evento.idFacility]" class="card-img-top border-bottom event_image" alt="texto_alternativo"> @* style="width: 18rem; height:10rem" *@
+                                            
+                                              
+                                            
+                                            <h5 class="card-title">@evento.name</h5>
+                                            <p class="card-text"><strong>Hora de inicio:</strong> @evento.date.ToString("hh:mm tt")</p>
+                                            <p class="card-text"><strong>Ubicación:</strong> @ubicaciones[evento.idFacility]</p>
+                                            <p class="card-text"><strong>Organizador:</strong> @evento.organizer</p>
+                                            <p class="card-text"><strong>Categoría:</strong> @categorias[evento.idEventType]</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            column_number++;
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Contenedor del modal -->
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eventModalLabel">Título del Evento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Título:</strong> Descripción del evento</p>
+                    <p><strong>Hora:</strong> Hora del evento</p>
+                    <!-- Agregar más detalles del evento aquí -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Asistiré</button>
+                    <button type="button" class="btn btn-primary">Me interesa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

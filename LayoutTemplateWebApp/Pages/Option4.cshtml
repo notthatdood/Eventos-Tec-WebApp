@@ -1,0 +1,136 @@
+@page
+@model LayoutTemplateWebApp.Pages.Option4Model
+@{
+    ViewData["Title"] = "Crear Evento";
+}
+
+<!-- Agrega las rutas de los estilos Bootstrap y la biblioteca jQuery (asegúrate de incluir las rutas correctas) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+npRnp0t0k4pXVIjOwv4amF5U5W04lW4U3Z7YYUqxKy3kw5p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-5rtj9St7Fq3XRWeGC6zPp19MgV1Fp4eM5pUnR+OGp1Q1ZC1l9RMjw5E5f5Frw5L5C" crossorigin="anonymous"></script>
+<script src ="~/js/site.js"></script>
+
+
+<body>
+    <div class="container">
+        <h1 class="display-2 mt-4">Crear un Nuevo Evento</h1>
+        <form method="post">
+            <div class="mb-3">
+                <label for="eventName" class="form-label">1. Nombre del Evento</label>
+                <input type="text" class="form-control" id="eventName" name="eventName" required>
+            </div>
+
+            <div class="mb-3">
+                <label for "eventDate" class="form-label">2. Fecha del Evento</label>
+                <input type="date" class="form-control" id="eventDate" name="eventDate" required>
+            </div>
+
+
+            <!-- Botón "Seleccionar" para abrir el modal -->
+            <div class="mb-3">
+                <label>3. Instalación</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Selecciona una instalación" id="selectedInstallationId" name="selectedInstallationId" required readonly>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#installationModal">Seleccionar</button>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="eventDescription" class="form-label">4. Descripción del Evento</label>
+                <textarea class="form-control" id="eventDescription" name="eventDescription" rows="4" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="maxCapacity" class="form-label">5. Capacidad Máxima del Evento</label>
+                <input type="number" class="form-control" id="maxCapacity" name="maxCapacity" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="entryCost" class="form-label">6. Costo de Entrada del Evento</label>
+                <input type="text" class="form-control" id="entryCost" name="entryCost" required>
+            </div>
+
+            <div class="mb-3">
+                <label>7. El evento es académico o recreativo</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="eventType" id="academicEvent" value="academic" required>
+                    <label class="form-check-label" for="academicEvent">
+                        Académico
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="eventType" id="recreationalEvent" value="recreational" required>
+                    <label class="form-check-label" for="recreationalEvent">
+                        Recreativo
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Crear Evento</button>
+        </form>
+    </div>
+
+    <!-- Modal de instalaciones -->
+    <div class="modal fade" id="installationModal" tabindex="-1" aria-labelledby="installationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="installationModalLabel">Selecciona una Instalación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="buildingTypeDropdown" class="form-label">Tipo de Edificio</label>
+                            <select class="form-select" id="buildingTypeDropdown">
+                                <option value="0">Seleccione tipo</option>
+                                <!-- Opciones del dropdown se cargarán dinámicamente -->
+                                @foreach (var typeFacility in Model.GroupedFacilities)
+                                {
+                                    var typeName = Model.Ftypes.FirstOrDefault(type => type.idFacilityType == typeFacility.Key)?.name;
+                                    <option value="@typeFacility.Key">@typeName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>.
+
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <h5>Edificios</h5>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre del Edificio</th>
+                                        <th>Capacidad</th>
+                                        <th>Seleccionar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="buildingGrid">
+                                    @foreach (var typeFacility in Model.GroupedFacilities)
+                                    {
+                                        @foreach (var facility in typeFacility.Value)
+                                        {
+                                            <tr data-type="@typeFacility.Key">
+                                                <!-- Agregar atributo data-type para filtrar las filas -->
+                                                <td>@facility.name</td>
+                                                <td>@facility.capacity</td>
+                                                <td>
+                                                    <button class="btn btn-primary select-building">Seleccionar</button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
