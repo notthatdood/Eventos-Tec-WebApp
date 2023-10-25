@@ -28,6 +28,7 @@
                         var option2IsActive = Context.Request.Path.Value.Contains("/Option2");
                         var option3IsActive = Context.Request.Path.Value.Contains("/Option3");
                         var option4IsActive = Context.Request.Path.Value.Contains("/Option4");
+                        var SolicitudesEventosIsActive = Context.Request.Path.Value.Contains("/Organizador/SolicitudesEventos");
 
                     }
 
@@ -43,6 +44,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link @(option4IsActive ? "active" : "")" asp-area="" asp-page="/Option4">Crear nuevo evento</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(SolicitudesEventosIsActive ? "active" : "")" asp-area="" asp-page="/Organizador/SolicitudesEventos">Solicitudes de eventos</a>
                         </li>
                     </ul>
                 </div>

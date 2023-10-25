@@ -1,12 +1,15 @@
+using LayoutTemplateWebApp.Data;
 using LayoutTemplateWebApp.Model;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
 using System.Text.Json;
 
-namespace LayoutTemplateWebApp.Pages.Estudiante
+namespace LayoutTemplateWebApp.Pages
 {
-    public class IndexModel : PageModel
+    public class SolicitudesEventosModel : PageModel
     {
+        private readonly ApplicationDbContext _db; // Reemplaza con el contexto de tu base de datos
+
         public List<Event> Solicitudes { get; set; }
         private readonly IHttpClientFactory _clientFactory;
         public string role { get; set; }
@@ -14,10 +17,12 @@ namespace LayoutTemplateWebApp.Pages.Estudiante
         public List<UserAPIModel> PersonList { get; set; }
         public string RawJsonData { get; set; }
 
-        public IndexModel(IHttpClientFactory clientFactory)
+        public SolicitudesEventosModel(ApplicationDbContext db, IHttpClientFactory clientFactory)
         {
+            _db = db;
             _clientFactory = clientFactory;
         }
+
 
         public async Task OnGet2()
         {
@@ -25,6 +30,7 @@ namespace LayoutTemplateWebApp.Pages.Estudiante
             PersonList = await LoadPersonsData();
 
         }
+
         public async Task<List<UserAPIModel>> LoadPersonsData()
         {
             var client = _clientFactory.CreateClient();
@@ -61,5 +67,17 @@ namespace LayoutTemplateWebApp.Pages.Estudiante
             PersonList = await LoadPersonsData();
             Console.WriteLine($"Role: {role}");
         }
+
+        public void AceptarSolicitud(int idEvento)
+        {
+            // Aquí puedes implementar la lógica para aceptar la solicitud (actualizar en la base de datos, etc.)
+        }
+
+        public void DenegarSolicitud(int idEvento)
+        {
+            // Aquí puedes implementar la lógica para denegar la solicitud (eliminar de la base de datos, etc.)
+        }
+
+
     }
 }

@@ -1,7 +1,26 @@
 ﻿@page
 @model LayoutTemplateWebApp.Pages.Profesor.BienvenidaProfesorModel
 @{
-    ViewData["Title"] = "Bienvenida Profesor";
+    ViewData["Title"] = "Solicitudes de Creación de Evento";
+    var userRole = @Model.role;
+    string layoutName;
+    switch (userRole)
+    {
+        case "1616": // Estudiante
+            layoutName = "_LayoutEstudiante";
+            break;
+        case "1717": // Profesor
+            layoutName = "_LayoutProfesor";
+            break;
+        case "1919": // Organizador
+            layoutName = "_LayoutOrganizador";
+            break;
+        default:
+            layoutName = "_ErrorLayout";
+            break;
+    }
+
+    Layout = layoutName;
 }
 
 <div class="container my-5">

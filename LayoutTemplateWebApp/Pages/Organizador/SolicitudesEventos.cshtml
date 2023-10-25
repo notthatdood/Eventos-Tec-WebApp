@@ -1,0 +1,45 @@
+﻿@page
+@model LayoutTemplateWebApp.Pages.SolicitudesEventosModel
+
+@{
+    ViewData["Title"] = "Solicitudes de Creación de Evento";
+    var userRole = @Model.role;
+    string layoutName;
+    switch (userRole)
+    {
+        case "1616": // Estudiante
+            layoutName = "_LayoutEstudiante";
+            break;
+        case "1717": // Profesor
+            layoutName = "_LayoutProfesor";
+            break;
+        case "1919": // Organizador
+            layoutName = "_LayoutOrganizador";
+            break;
+        default:
+            layoutName = "_ErrorLayout";
+            break;
+    }
+
+    Layout = layoutName;
+}
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Descripción</th>
+                <th>Organizador</th>
+                <th>Capacidad</th>
+                <th>Costo de Entrada</th>
+                <th>Categoría</th>
+                <th>Ubicación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+    </table>
+</div>
