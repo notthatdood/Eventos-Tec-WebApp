@@ -27,8 +27,11 @@ namespace LayoutTemplateWebApp.Pages
         [BindProperty]
         public IFormFile EventImage { get; set; }
 
+        
+        public DateTime datetime { get; set; }
+
         [BindProperty]
-        public Event Events { get; set; }
+        public Event myEvent { get; set; }
 
         public Option4Model(ApplicationDbContext db, IHttpClientFactory clientFactory)
         {
@@ -88,8 +91,9 @@ namespace LayoutTemplateWebApp.Pages
         public async Task<IActionResult> OnPost()
         {
 
-            Debug.WriteLine($"Fecha del formulario: {Events.date}");
-
+            Debug.WriteLine($"Fecha del formulario: {myEvent.date}");
+            Debug.WriteLine("Fecha del formulario: " + myEvent.description);
+            Debug.WriteLine("Fecha del formulario: " + myEvent.name);
             if (EventImage != null && EventImage.Length > 0)
             {
                 // Verifica que se haya cargado una imagen
@@ -112,7 +116,7 @@ namespace LayoutTemplateWebApp.Pages
                     await _db.SaveChangesAsync();
                 }
             }
-            await _db.Event.AddAsync(Events);
+            await _db.Event.AddAsync(myEvent);
             await _db.SaveChangesAsync();
             return RedirectToPage("/Option1");
         }

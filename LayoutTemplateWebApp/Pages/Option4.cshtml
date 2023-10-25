@@ -36,13 +36,13 @@
         <h1 class="display-2 mt-4">Crear un Nuevo Evento</h1>
         <form method="post">
             <div class="mb-3">
-                <label asp-for="@Model.Events.name" class="form-label">1. Nombre del Evento</label>
-                <input asp-for="@Model.Events.name" class="form-control">
+                <label asp-for="@Model.myEvent.name" class="form-label">1. Nombre del Evento</label>
+                <input asp-for="@Model.myEvent.name" class="form-control">
             </div>
 
             <div class="mb-3">
-                <label asp-for="@Model.Events.date" class="form-label">2. Fecha del Evento</label>
-                <input asp-for="@Model.Events.date" class="form-control" id="eventDate" name="eventDate" required>
+                <label asp-for="@Model.myEvent.date" class="form-label">2. Fecha del Evento</label>
+                <input asp-for="@Model.myEvent.date" class="form-control" required>
             </div>
 
 
@@ -50,24 +50,24 @@
             <div class="mb-3">
                 <label>3. Instalación</label>
                 <div class="input-group">
-                    <input asp-for="@Model.Events.idFacility" class="form-control" placeholder="Selecciona una instalación" id="selectedInstallationId" name="selectedInstallationId" required readonly>
+                    <input asp-for="@Model.myEvent.idFacility" class="form-control" placeholder="Selecciona una instalación" id="selectedInstallationId" name="selectedInstallationId" required readonly>
                     <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#installationModal">Seleccionar</button>
                 </div>
             </div>
 
             <div class="mb-3">
-                <label asp-for="@Model.Events.description" class="form-label">4. Descripción del Evento</label>
-                <input asp-for="@Model.Events.description" class="form-control" id="eventDescription" name="eventDescription" rows="4" required>
+                <label asp-for="@Model.myEvent.description" class="form-label">4. Descripción del Evento</label>
+                <input asp-for="@Model.myEvent.description" class="form-control" rows="4" required>
             </div>
 
             <div class="mb-3">
-                <label asp-for="@Model.Events.capacityNumber" class="form-label">5. Capacidad Máxima del Evento</label>
-                <input asp-for="@Model.Events.capacityNumber" class="form-control" id="maxCapacity" name="maxCapacity" required>
+                <label asp-for="@Model.myEvent.capacityNumber" class="form-label">5. Capacidad Máxima del Evento</label>
+                <input asp-for="@Model.myEvent.capacityNumber" class="form-control" required>
             </div>
 
             <div class="mb-3">
-                <label asp-for="@Model.Events.entryCost" class="form-label">6. Costo de Entrada del Evento</label>
-                <input asp-for="@Model.Events.entryCost" class="form-control" id="entryCost" name="entryCost" required>
+                <label asp-for="@Model.myEvent.entryCost" class="form-label">6. Costo de Entrada del Evento</label>
+                <input asp-for="@Model.myEvent.entryCost" class="form-control" required>
             </div>
 
             <div class="mb-3">
