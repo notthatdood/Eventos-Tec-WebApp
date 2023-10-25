@@ -16,22 +16,15 @@ namespace LayoutTemplateWebApp.Pages
         private readonly IHttpClientFactory _clientFactory;
 
         public UserAPIModel User { get; set; }
-        private readonly ILogger<IndexModel> _logger;
-
 
         public string RawJsonData { get; set; }
 
 
-        /*public IndexModel(IHttpClientFactory clientFactory)
+        public IndexModel(IHttpClientFactory clientFactory)
         {
             _clientFactory = clientFactory;
-        }*/
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-
         }
+
 
         public async Task OnGetAsync(string email)
         {

@@ -28,25 +28,21 @@
                         var option2IsActive = Context.Request.Path.Value.Contains("/Option2");
                         var option3IsActive = Context.Request.Path.Value.Contains("/Option3");
                         var option4IsActive = Context.Request.Path.Value.Contains("/Option4");
-                        var BienvenidaOrganizadorIsActive = Context.Request.Path.Value.Contains("/BienvenidaOrganizador");
 
                     }
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link @(option1IsActive ? "active" : "")" asp-area="" asp-page="/Calendario_de_Eventos">Calendario de Eventos</a>
+                            <a class="nav-link @(option1IsActive ? "active" : "")" asp-area="" asp-page="/Option1">Calendario de Eventos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(option2IsActive ? "active" : "")" asp-area="" asp-page="/Mis_proximos_eventos">Mis próximos eventos</a>
+                            <a class="nav-link @(option2IsActive ? "active" : "")" asp-area="" asp-page="/Option2">Mis próximos eventos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(option3IsActive ? "active" : "")" asp-area="" asp-page="/Historial">Historial</a>
+                            <a class="nav-link @(option3IsActive ? "active" : "")" asp-area="" asp-page="/Option3">Historial</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(option4IsActive ? "active" : "")" asp-area="" asp-page="/Crear_nuevo_evento">Crear nuevo evento</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(BienvenidaOrganizadorIsActive ? "active" : "")" asp-area="" asp-page="/Bienvenida_Organizador">Bienvenida Organizador</a>
+                            <a class="nav-link @(option4IsActive ? "active" : "")" asp-area="" asp-page="/Option4">Crear nuevo evento</a>
                         </li>
                     </ul>
                 </div>
@@ -62,11 +58,10 @@
 
                 </div>
 
-                <a id="iconoProfile">
-                    <div class="icon-Profile bg-footer text-center align-middle fs-3 text-white" style="margin-left: 20px;">
-                        <i class="bi bi-person" alt="Ícono ver perfil"></i>
-                    </div>
-                </a>
+                <div class="icon-Profile bg-footer text-center align-middle fs-3 text-white">
+                    <a asp-page="/Organizador/BienvenidaOrganizador" class="profile-link">
+                        <i class="bi bi-person"></i>
+                    </a>
                 </div>
 
 

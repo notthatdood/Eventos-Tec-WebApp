@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Inicio</title>
+    <title>@ViewData["Title"]Inicio</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
@@ -27,26 +28,20 @@
                         var option1IsActive = Context.Request.Path.Value.Contains("/Option1");
                         var option2IsActive = Context.Request.Path.Value.Contains("/Option2");
                         var option3IsActive = Context.Request.Path.Value.Contains("/Option3");
-                        var option4IsActive = Context.Request.Path.Value.Contains("/Option4");
-
                     }
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link @(option1IsActive ? "active" : "")" asp-area="" asp-page="/Option1">Calendario de Eventos</a>
+                            <a class="nav-link @(option1IsActive ? "activeNav" : "")" asp-area="" asp-page="/">Vacío</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(option2IsActive ? "active" : "")" asp-area="" asp-page="/Option2">Mis próximos eventos</a>
+                            <a class="nav-link @(option2IsActive ? "activeNav" : "")" asp-area="" asp-page="/">Vacío</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(option3IsActive ? "active" : "")" asp-area="" asp-page="/Option3">Historial</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(option4IsActive ? "active" : "")" asp-area="" asp-page="/Option4">Crear nuevo evento</a>
+                            <a class="nav-link @(option3IsActive ? "activeNav" : "")" asp-area="" asp-page="/">Vacío</a>
                         </li>
                     </ul>
                 </div>
-                <!-- Accesibility Icons -->
                 <div class="text-center align-middle text-black mx-1">
                     <!-- Interactive icons represented as buttons -->
                     <button id="highContras" class="icon-button bi bi-brightness-high-fill" aria-label="Alto constraste" style="cursor: pointer;" onclick="applyHighContrast()">
@@ -57,15 +52,9 @@
                     </button>
 
                 </div>
-
                 <div class="icon-Profile bg-footer text-center align-middle fs-3 text-white">
-                    <a asp-page="/Profesor/BienvenidaProfesor" class="profile-link">
-                        <i class="bi bi-person"></i>
-                    </a>
+                    <i class="bi bi-person"></i>
                 </div>
-
-
-
             </div>
         </nav>
     </header>
@@ -73,11 +62,21 @@
 
     <div class="page d-flex flex-row bg-grayContrast">
         <aside class="site-bar bg-white">
-
+            <ul class="d-flex flex-column gap-3 px-0 py-2">
+                <li class="py-2 inline-nav-item ">
+                    <i class="bi bi-people-fill"></i>
+                    Vacío
+                </li>
+                <li class="py-2 inline-nav-item ">
+                    <i class="bi bi-people-fill"></i>
+                    Vacío
+                </li>
+            </ul>
 
         </aside>
         <div class="content-page w-100">
             <main role="main" class="pb-3">
+
 
 
                 @RenderBody()
@@ -85,15 +84,20 @@
         </div>
     </div>
 
-    <footer class="border-top footer text-muted ">
-        <div class="container">
-            richardarayapad@estudiantec.cr - raulsanabria@estudiantec.ac.cr     2023
+    <footer class="border-top footer text-muted">
+        <div class="container d-flex justify-content-end align-items-center">
+            <i class="bi bi-facebook me-2"></i>
+            <span>IntegraTEC</span>
+            <i class="bi bi-instagram ms-3 me-2"></i>
+            <span>Integratec_itcr</span>
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <!-- For the datepicker -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
     @await RenderSectionAsync("Scripts", required: false)

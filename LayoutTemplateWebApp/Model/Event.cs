@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlTypes;
 
 namespace LayoutTemplateWebApp.Model
@@ -8,6 +10,7 @@ namespace LayoutTemplateWebApp.Model
         [Key]
         public int idEvent { get; set; }
         public string name { get; set; }
+        [Column(TypeName = "datetime")]
         public DateTime date { get; set; }
         public int idEventState { get; set; }
         public string description { get; set; }

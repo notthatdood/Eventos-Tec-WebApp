@@ -3,6 +3,7 @@ using LayoutTemplateWebApp.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -87,7 +88,7 @@ namespace LayoutTemplateWebApp.Pages
         public async Task<IActionResult> OnPost()
         {
 
-            Console.WriteLine($"Fecha del formulario: {Events.date}");
+            Debug.WriteLine($"Fecha del formulario: {Events.date}");
 
             if (EventImage != null && EventImage.Length > 0)
             {
