@@ -1,8 +1,23 @@
-﻿@page
+﻿@page "{email?}"
 @model IndexModel
 @{
-     ViewData["Title"] = "Index";
+    ViewData["Title"] = "Bienvenido al Gestor de Eventos";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <p>¡Bienvenido al Gestor de Eventos! Aquí puedes organizar y administrar todos tus eventos de manera eficiente. Ya sea que estés planeando conferencias, conciertos, reuniones académicas o cualquier otro tipo de evento, nuestro gestor te ayudará a simplificar el proceso.</p>
+
+    <p>Características destacadas:</p>
+    <ul>
+        <li>Creación sencilla de eventos con descripciones detalladas.</li>
+        <li>Gestión de la fecha y ubicación de tus eventos.</li>
+        <li>Control de la capacidad máxima y el costo de entrada.</li>
+        <li>Clasificación de eventos como académicos o recreativos.</li>
+        <li>Selección de instalaciones y edificios para tus eventos.</li>
+    </ul>
+
+    <p>¡Comienza a aprovechar todas estas funciones ahora mismo! Solo da click en alguna de las pestañas para empezar a organizar tus eventos de manera eficiente.</p>
+
+    <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en ponerte en contacto con nuestro equipo de soporte. Estamos aquí para ayudarte.</p>
+</div>

@@ -1,6 +1,8 @@
+using LayoutTemplateWebApp.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
+using System.Text.Json;
 
 namespace LayoutTemplateWebApp.Pages
 {
@@ -8,20 +10,55 @@ namespace LayoutTemplateWebApp.Pages
     [IgnoreAntiforgeryToken]
     public class ErrorModel : PageModel
     {
+        private readonly IHttpClientFactory _clientFactory;
+        public string role { get; set; }
+
+        public List<UserAPIModel> PersonList { get; set; }
+
+        public string RawJsonData { get; set; }
+
         public string? RequestId { get; set; }
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
         private readonly ILogger<ErrorModel> _logger;
 
-        public ErrorModel(ILogger<ErrorModel> logger)
+        public ErrorModel(ILogger<ErrorModel> logger, IHttpClientFactory clientFactory)
         {
             _logger = logger;
+            _clientFactory = clientFactory;
+        }
+
+        public async Task<List<UserAPIModel>> LoadPersonsData()
+        {
+            var client = _clientFactory.CreateClient();
+            var response = await client.GetAsync("http://sistema-tec.somee.com/api/users");
+            List<UserAPIModel> personList = new List<UserAPIModel>();
+            if (response.IsSuccessStatusCode)
+            {
+                try
+                {
+                    var data = await response.Content.ReadAsStringAsync();
+                    var allPersons = JsonSerializer.Deserialize<List<UserAPIModel>>(data);
+                    personList = allPersons.Where(p => p.ApplicationRoles.Any(ar =>
+                        ar.ApplicationId == 8 && ar.ApplicationRoleName != null
+                    )).ToList();
+                    RawJsonData = JsonSerializer.Serialize(personList);
+                }
+                catch (JsonException ex)
+                {
+                    RawJsonData = $"Error deserializing data: {ex.Message}";
+                }
+            }
+            else
+            {
+                RawJsonData = $"Error: {response.StatusCode}";
+            }
+            return personList;
         }
 
         public void OnGet()
         {
-            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
         }
     }
 }

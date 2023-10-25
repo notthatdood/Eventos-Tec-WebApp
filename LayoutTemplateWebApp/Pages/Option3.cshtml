@@ -1,7 +1,27 @@
 ﻿@page
 @model Option1Model
 @{
-    ViewData["Title"] = "Historial";
+    ViewData["Title"] = "Calendario de Eventos";
+    var userRole = @Model.role;
+    string layoutName;
+
+    switch (userRole)
+    {
+        case "1616": // Estudiante
+            layoutName = "_LayoutEstudiante";
+            break;
+        case "1717": // Profesor
+            layoutName = "_LayoutProfesor";
+            break;
+        case "1919": // Organizador
+            layoutName = "_LayoutOrganizador";
+            break;
+        default:
+            layoutName = "_ErrorLayout";
+            break;
+    }
+
+    Layout = layoutName;
 }
 
 <!DOCTYPE html>
@@ -19,41 +39,40 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h1 class="display-1">Historial</h1>
-           
+
             </div>
         </div>
-        
+
         <!-- Dos columnas -->
         <div class="row mt-4">
             <div class="col-md-6">
                 <h2 class="date-title display-4">Eventos Anteriores</h2>
                 <!-- Aquí puedes mostrar los próximos eventos -->
-
                 <!-- Agregar más eventos aquí -->
             </div>
-            
-               
+
+
             <!-- Evento 2 -->
-        <div class="row mt-4">
-            <div class="col-md-4">
-                <div class="card event-card">
-                    <img src="https://www.tec.ac.cr/sites/default/files/media/img/body/cic.png" alt="Imagen del evento 2" class="card-img-left">
-                    <div class="card-body">
-                        <h5 class="card-title">Evento 2</h5>
-                        <p class="card-text"><strong>Fecha:</strong> 09 de septiembre</p>
-                        <p class="card-text"><strong>Título:</strong> Charla Sobre Administración de Proyectos</p>
-                        <p class="card-text"><strong>Hora:</strong> 11:00 AM</p>
-                        <p class="card-text"><strong>Lugar:</strong> Auditorio de Centro de Investigación en Computación</p>
-                        <p class="card-text"><strong>Cupo Máximo:</strong> 50</p>
-                        <p class="card-text"><strong>Organizador:</strong> PM S.A</p>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card event-card">
+                        <img src="https://www.tec.ac.cr/sites/default/files/media/img/body/cic.png" alt="Imagen del evento 2" class="card-img-left">
+                        <div class="card-body">
+                            <h5 class="card-title">Evento 2</h5>
+                            <p class="card-text"><strong>Fecha:</strong> 09 de septiembre</p>
+                            <p class="card-text"><strong>Título:</strong> Charla Sobre Administración de Proyectos</p>
+                            <p class="card-text"><strong>Hora:</strong> 11:00 AM</p>
+                            <p class="card-text"><strong>Lugar:</strong> Auditorio de Centro de Investigación en Computación</p>
+                            <p class="card-text"><strong>Cupo Máximo:</strong> 50</p>
+                            <p class="card-text"><strong>Organizador:</strong> PM S.A</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-            
+
         </div>
     </div>
-    
+
     <!-- Contenedor del modal -->
     <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">

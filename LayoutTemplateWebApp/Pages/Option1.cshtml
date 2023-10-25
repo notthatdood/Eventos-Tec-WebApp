@@ -2,6 +2,25 @@
 @model LayoutTemplateWebApp.Pages.Option1Model
 @{
     ViewData["Title"] = "Calendario de Eventos";
+    var userRole = @Model.role;
+    string layoutName;
+    switch (userRole)
+    {
+        case "1616": // Estudiante
+            layoutName = "_LayoutEstudiante";
+            break;
+        case "1717": // Profesor
+            layoutName = "_LayoutProfesor";
+            break;
+        case "1919": // Organizador
+            layoutName = "_LayoutOrganizador";
+            break;
+        default:
+            layoutName = "_ErrorLayout";
+            break;
+    }
+
+    Layout = layoutName;
 }
 <!DOCTYPE html>
 <html lang="es-mx">
@@ -89,12 +108,12 @@
 
                                     <div class="card h-100">
                                         <div class="card-body">
-                                            
-                                           
-                                             <img src="@imagenes[evento.idFacility]" class="card-img-top border-bottom event_image" alt="texto_alternativo"> @* style="width: 18rem; height:10rem" *@
-                                            
-                                              
-                                            
+
+
+                                            <img src="@imagenes[evento.idFacility]" class="card-img-top border-bottom event_image" alt="texto_alternativo"> @* style="width: 18rem; height:10rem" *@
+
+
+
                                             <h5 class="card-title">@evento.name</h5>
                                             <p class="card-text"><strong>Hora de inicio:</strong> @evento.date.ToString("hh:mm tt")</p>
                                             <p class="card-text"><strong>Ubicación:</strong> @ubicaciones[evento.idFacility]</p>

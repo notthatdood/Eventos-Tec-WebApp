@@ -1,7 +1,27 @@
 ﻿@page
 @model LayoutTemplateWebApp.Pages.Option1Model
 @{
-    ViewData["Title"] = "Mis próximos eventos";
+    ViewData["Title"] = "Calendario de Eventos";
+    var userRole = @Model.role;
+    string layoutName;
+
+    switch (userRole)
+    {
+        case "1616": // Estudiante
+            layoutName = "_LayoutEstudiante";
+            break;
+        case "1717": // Profesor
+            layoutName = "_LayoutProfesor";
+            break;
+        case "1919": // Organizador
+            layoutName = "_LayoutOrganizador";
+            break;
+        default:
+            layoutName = "_ErrorLayout";
+            break;
+    }
+
+    Layout = layoutName;
 }
 
 <!DOCTYPE html>
@@ -24,9 +44,9 @@
             transition: transform 0.2s; /* Efecto de transición en hover */
         }
 
-        .event-card:hover {
-            transform: translateY(-5px); /* Eleva ligeramente el cuadro en hover */
-        }
+            .event-card:hover {
+                transform: translateY(-5px); /* Eleva ligeramente el cuadro en hover */
+            }
     </style>
 </head>
 <body>

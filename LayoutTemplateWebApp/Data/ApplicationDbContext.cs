@@ -18,6 +18,7 @@ namespace LayoutTemplateWebApp.Data
         public DbSet<FacilityAdministrator> FacilityAdministrators { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Facility> Facility { get; set; }                                        // Agrega otros DbSet para las demás entidades de tu modelo aquí
+        public DbSet<Image> Images { get; set; }                                     // Agrega otros DbSet para las demás entidades de tu modelo aquí
         public async Task CreateEventAsync(string name, DateTime date, int idEventState, string description, string organizer, string maxCapacity, string entryCost, int idEventType)
         {
             using (var connection = Database.GetDbConnection() as SqlConnection)
