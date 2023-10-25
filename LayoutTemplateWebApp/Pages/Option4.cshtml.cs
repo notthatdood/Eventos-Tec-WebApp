@@ -1,5 +1,6 @@
 using LayoutTemplateWebApp.Data;
 using LayoutTemplateWebApp.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
@@ -15,7 +16,6 @@ namespace LayoutTemplateWebApp.Pages
     {
         private readonly IHttpClientFactory _clientFactory;
         public string role { get; set; }
-
         public List<UserAPIModel> PersonList { get; set; }
         public string RawJsonData { get; set; }
         private readonly ApplicationDbContext _db;
@@ -93,7 +93,7 @@ namespace LayoutTemplateWebApp.Pages
 
             Debug.WriteLine($"Fecha del formulario: {myEvent.date}");
             Debug.WriteLine("Fecha del formulario: " + myEvent.description);
-            Debug.WriteLine("Fecha del formulario: " + myEvent.name);
+            
             if (EventImage != null && EventImage.Length > 0)
             {
                 // Verifica que se haya cargado una imagen
@@ -116,6 +116,10 @@ namespace LayoutTemplateWebApp.Pages
                     await _db.SaveChangesAsync();
                 }
             }
+            myEvent.organizer = HttpContext.Session.GetString("email");
+            myEvent.idCapacityType = 2;
+            myEvent.idEventState = 1;
+            Debug.WriteLine("Fecha del formulario: " + myEvent.idFacility);
             await _db.Event.AddAsync(myEvent);
             await _db.SaveChangesAsync();
             return RedirectToPage("/Option1");
