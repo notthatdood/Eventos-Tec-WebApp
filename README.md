@@ -3,6 +3,10 @@ Event Manager System for ITCR.
 
 Developed by:
 
-Richard Araya (richardarayapad@estudiantec.cr)
+Raúl Sanabria Marroquín - 2020182835
 
-Raúl Sanabria (correo_raul)
+Andrés Sánchez Rojas - 2018100180
+
+Sebastián Vargas Mesén - 2019178495
+
+Kevin Córdoba Chevez - 2020100920
