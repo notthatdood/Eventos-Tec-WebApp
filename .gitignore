@@ -4,7 +4,7 @@
 bin/
 obj/
 
-# Ignorar archivos de dependencias NuGet (puedes personalizar esta lista)
+# Ignorar archivos de dependencias NuGet
 /packages/
 /*.suo
 *.user
@@ -14,3 +14,35 @@ obj/
 *.tmp
 
 LayoutTemplateWebApp/obj/
+
+# Rider
+.idea/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Visual Studio / .NET
+*.dll
+*.exe
+*.pdb
+*.dll.config
+*.exe.config
+*.json
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
