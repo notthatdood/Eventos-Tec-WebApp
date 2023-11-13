@@ -12,3 +12,5 @@ obj/
 
 *.log
 *.tmp
+
+LayoutTemplateWebApp/obj/
