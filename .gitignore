@@ -1,0 +1,14 @@
+# Ignorar archivos generados por Visual Studio
+.vscode/
+.vs/
+bin/
+obj/
+
+# Ignorar archivos de dependencias NuGet (puedes personalizar esta lista)
+/packages/
+/*.suo
+*.user
+*.sln.docstates
+
+*.log
+*.tmp
