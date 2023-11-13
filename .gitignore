@@ -1,19 +1,9 @@
-# Ignorar archivos generados por Visual Studio
-.vscode/
-.vs/
+# Visual Studio / .NET
 bin/
 obj/
-
-# Ignorar archivos de dependencias NuGet
-/packages/
-/*.suo
-*.user
-*.sln.docstates
-
-*.log
-*.tmp
-
-LayoutTemplateWebApp/obj/
+*.dll
+*.exe
+*.pdb
 
 # Rider
 .idea/
@@ -35,14 +25,17 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
-# Visual Studio / .NET
-*.dll
-*.exe
-*.pdb
-*.dll.config
-*.exe.config
-*.json
+# Ignorar archivos generados por Visual Studio
+.vscode/
+.vs/
+
+# Ignorar archivos de dependencias NuGet
+/packages/
+/*.suo
 *.user
-*.userosscache
-*.suo
 *.sln.docstates
+
+*.log
+*.tmp
+
+LayoutTemplateWebApp/obj/
