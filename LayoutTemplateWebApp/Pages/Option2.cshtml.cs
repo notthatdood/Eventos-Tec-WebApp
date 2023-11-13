@@ -1,31 +1,35 @@
-using LayoutTemplateWebApp.Model;
+using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Diagnostics;
+using LayoutTemplateWebApp.Model;
+using LayoutTemplateWebApp.Data;
 using System.Text.Json;
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+
 
 namespace LayoutTemplateWebApp.Pages
 {
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    [IgnoreAntiforgeryToken]
-    public class ErrorModel : PageModel
+    public class Option2Model : PageModel
+
     {
         private readonly IHttpClientFactory _clientFactory;
         public string role { get; set; }
 
         public List<UserAPIModel> PersonList { get; set; }
-
         public string RawJsonData { get; set; }
+        private readonly ApplicationDbContext _db; // Reemplaza "ApplicationDbContext" con el contexto de tu base de datos
 
-        public string? RequestId { get; set; }
 
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+        public Option2Model(ApplicationDbContext db, IHttpClientFactory clientFactory)
 
-        private readonly ILogger<ErrorModel> _logger;
-
-        public ErrorModel(ILogger<ErrorModel> logger, IHttpClientFactory clientFactory)
         {
-            _logger = logger;
+            _db = db;
             _clientFactory = clientFactory;
         }
 
@@ -57,8 +61,21 @@ namespace LayoutTemplateWebApp.Pages
             return personList;
         }
 
-        public void OnGet()
+
+
+        public async Task role_setup()
         {
+            role = HttpContext.Session.GetString("role");
+            PersonList = await LoadPersonsData();
+            Console.WriteLine($"Role: {role}");
+        }
+        public async Task OnGet()
+        {
+            role_setup();
+            // Recuperar eventos de la base de datos
+            var events = _db.Event.ToList();
+            var facilities = _db.Facility.ToList();
+
         }
     }
 }

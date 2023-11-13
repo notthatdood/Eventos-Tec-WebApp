@@ -1,5 +1,5 @@
 ﻿@page
-@model LayoutTemplateWebApp.Pages.Option1Model
+@model CalendarioModel
 @{
     ViewData["Title"] = "Calendario de Eventos";
     var userRole = @Model.role;
@@ -42,7 +42,7 @@
             </div>
         </div>
         <!-- Botones -->
-        <div class="row">
+        <!--<div class="row">
             <div class="col-12 text-center">
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-primary">Categoría</button>
@@ -50,7 +50,7 @@
                     <button type="button" class="btn btn-primary">Ubicaciones</button>
                 </div>
             </div>
-        </div>
+            </div>-->
 
 
         @* Nueva fila con margin top de 4*@
@@ -81,9 +81,9 @@
                 imagenes.Add(5, "https://www.tec.ac.cr/sites/default/files/media/img/body/cic.png");
 
                 IDictionary<int, string> categorias = new Dictionary<int, string>();
-                categorias.Add(1, "Charla");
-                categorias.Add(2, "Deportes");
-                categorias.Add(3, "Música");
+                categorias.Add(1, "Académico");
+                categorias.Add(2, "Recreativo");
+                categorias.Add(3, "Recreativo");
 
 
                 <h2 class="date-title display-4">@dateEvents.Key.ToLongDateString()</h2>
@@ -110,15 +110,25 @@
                                         <div class="card-body">
 
 
-                                            <img src="@imagenes[evento.idFacility]" class="card-img-top border-bottom event_image" alt="texto_alternativo"> @* style="width: 18rem; height:10rem" *@
+                                            <img src="@imagenes[evento.idFacility%6]" class="card-img-top border-bottom event_image" alt="texto_alternativo"> @* style="width: 18rem; height:10rem" *@
 
 
 
                                             <h5 class="card-title">@evento.name</h5>
                                             <p class="card-text"><strong>Hora de inicio:</strong> @evento.date.ToString("hh:mm tt")</p>
-                                            <p class="card-text"><strong>Ubicación:</strong> @ubicaciones[evento.idFacility]</p>
+                                            @foreach (var typeFacility in Model.GroupedFacilities)
+                                            {
+                                                foreach (var facility in typeFacility.Value)
+                                                {
+                                                    if (facility.idFacility == evento.idFacility)
+                                                    {
+                                                        <p class="card-text"><strong>Ubicación:</strong> @facility.name</p>
+                                                    }
+                                                }
+                                            }
                                             <p class="card-text"><strong>Organizador:</strong> @evento.organizer</p>
                                             <p class="card-text"><strong>Categoría:</strong> @categorias[evento.idEventType]</p>
+                                            <a asp-page="Detalles" asp-route-id="@evento.idEvent" class="btn btn-primary stretched-link"> Ver detalles </a>
                                         </div>
                                     </div>
                                 </div>
@@ -131,25 +141,6 @@
         </div>
     </div>
 
-    <!-- Contenedor del modal -->
-    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="eventModalLabel">Título del Evento</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p><strong>Título:</strong> Descripción del evento</p>
-                    <p><strong>Hora:</strong> Hora del evento</p>
-                    <!-- Agregar más detalles del evento aquí -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Asistiré</button>
-                    <button type="button" class="btn btn-primary">Me interesa</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </body>
 </html>

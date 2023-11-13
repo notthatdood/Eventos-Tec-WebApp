@@ -1,0 +1,76 @@
+﻿@page
+@model LayoutTemplateWebApp.EventosTemp.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    var userRole = @Model.role;
+    string layoutName;
+    switch (userRole)
+    {
+        case "1616": // Estudiante
+            layoutName = "_LayoutEstudiante";
+            break;
+        case "1717": // Profesor
+            layoutName = "_LayoutProfesor";
+            break;
+        case "1919": // Organizador
+            layoutName = "_LayoutOrganizador";
+            break;
+        default:
+            layoutName = "_ErrorLayout";
+            break;
+    }
+
+    Layout = layoutName;
+}
+
+<h1 class="display-3 mt-4 text-center"> Crear Instalación</h1>
+
+
+<div class="row mx-4">
+    <div class="col-md-4 mb-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Facility.name" class="control-label"></label>
+                <input asp-for="Facility.name" class="form-control" />
+                <span asp-validation-for="Facility.name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facility.capacity" class="control-label"></label>
+                <input asp-for="Facility.capacity" class="form-control" />
+                <span asp-validation-for="Facility.capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facility.idFacilityType" class="control-label"></label>
+                <select asp-for="Facility.idFacilityType" class ="form-control" asp-items="ViewBag.idFacilityType"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facility.idLocation" class="control-label"></label>
+                <select asp-for="Facility.idLocation" class ="form-control" asp-items="ViewBag.idLocation"></select>
+            </div>
+            @* Se cambio a que la idImage sea un url*@
+            <div class="form-group">
+                <label asp-for="Facility.idImage" class="control-label"></label>
+                <input asp-for="Facility.idImage" class="form-control" />
+                <span asp-validation-for="Facility.idImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facility.idFacilityAdministrator" class="control-label"></label>
+                <select asp-for="Facility.idFacilityAdministrator" class ="form-control" asp-items="ViewBag.idFacilityAdministrator"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary mt-4" />
+            </div>
+        </form>
+    </div>
+    <a class="mt-2 ml-4" asp-page="Index"> Volver a gestión de eventos</a>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

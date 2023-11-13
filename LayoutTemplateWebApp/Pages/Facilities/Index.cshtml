@@ -1,0 +1,86 @@
+﻿@page
+@model LayoutTemplateWebApp.EventosTemp.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    var userRole = @Model.role;
+    string layoutName;
+    switch (userRole)
+    {
+        case "1616": // Estudiante
+            layoutName = "_LayoutEstudiante";
+            break;
+        case "1717": // Profesor
+            layoutName = "_LayoutProfesor";
+            break;
+        case "1919": // Organizador
+            layoutName = "_LayoutOrganizador";
+            break;
+        default:
+            layoutName = "_ErrorLayout";
+            break;
+    }
+
+    Layout = layoutName;
+}
+<h1 class="display-2 mt-4 text-center">Gestión de Instalaciones</h1>
+
+<p>
+    <div class="text-center">
+        
+    <a class="btn btn-primary col-2" asp-page="Create"> Registrar nueva instalación </a>
+    </div>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Facility[0].name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Facility[0].capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Facility[0].FacilityType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Facility[0].Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Facility[0].idImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Facility[0].FacilityAdministrator)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Facility) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacilityType.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacilityAdministrator.email)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.idFacility">Modificar</a> |
+                <a asp-page="./Delete" asp-route-id="@item.idFacility">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

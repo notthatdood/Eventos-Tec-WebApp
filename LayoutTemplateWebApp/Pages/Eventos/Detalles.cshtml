@@ -1,0 +1,91 @@
+﻿@page
+@model LayoutTemplateWebApp.Pages.Eventos.DetallesModel
+@{
+    ViewData["Title"] = "Detalles de Evento";
+    var userRole = @Model.role;
+    string layoutName;
+
+    switch (userRole)
+    {
+        case "1616": // Estudiante
+            layoutName = "_LayoutEstudiante";
+            break;
+        case "1717": // Profesor
+            layoutName = "_LayoutProfesor";
+            break;
+        case "1919": // Organizador
+            layoutName = "_LayoutOrganizador";
+            break;
+        default:
+            layoutName = "_ErrorLayout";
+            break;
+    }
+
+    Layout = layoutName;
+    
+}
+@{
+var idActual = Model.Event.idEvent;
+}
+<h1 class="display-2 mt-4 text-center">@Model.Event.name</h1>
+<div class="container" style="width: 100%;">
+
+    <span class="d-block p-2 bg-primary text-white col-12 mb-5"> @Model.Event.Facility.name - @Model.Event.date.ToLongDateString() -  @Model.Event.date.ToShortTimeString()
+     </span>
+<div class="d-block p-2 bg-primary text-white col-4">Acerca del evento:</div>
+    <div class="d-block p-2 bg-light text-black col-4"> @Model.Event.description </div>
+    <div class="d-block p-2 bg-light text-black col-4"> Organizado por @Model.Event.organizer </div>
+
+
+    <div class="d-block p-2 bg-primary text-white col-4">Capacidad:</div>
+<div class="d-block p-2 bg-light text-black mb-5 col-4">@Model.Event.capacityNumber</div>
+
+    <div class="d-block p-2 bg-primary text-white col-4">Costo de entrada:</div>
+<div class="d-block p-2 bg-light text-black mb-5 col-4"> Costo de entrada: @Model.Event.entryCost</div>
+
+    <div class="d-block p-2 bg-primary text-white col-4">Estado del Evento:</div>
+<div class="d-block p-2 bg-light text-black mb-5 col-4">@Model.Event.EventState.Name</div>
+    <div class="d-block p-2 bg-primary text-white col-4">Tipo de Evento: </div>
+<div class="d-block p-2 bg-light text-black mb-5 col-4">@Model.Event.EventType.name</div>
+    @*
+    <div class="row">
+               <div class="col-12">
+                   
+                   <button type="button" class="btn btn-primary col-2">Asistiré</button>
+                   <button type="button" class="btn btn-primary col-2">Me interesa</button>
+                   
+               </div>
+    </div>
+    *@
+</div>
+
+
+
+@{
+var contador = 0;
+}
+@foreach (var comentario in @Model.Event.Comments)
+{
+    contador++;
+}
+<div> Tiene @contador comentarios</div>
+@*
+<form method="post" asp-page-handler="OnPostCommentAsync" asp-route-id="idActual">
+    <div class="form-group">
+        <label asp-for="Comment.email" class="control-label"></label>
+        <input asp-for="Comment.email" class="form-control" />
+        <span asp-validation-for="Comment.email" class="text-danger"></span>
+
+        <label asp-for="Comment.text" class="control-label"></label>
+        <input asp-for="Comment.text" class="form-control" />
+        <span asp-validation-for="Comment.text" class="text-danger"></span>
+
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+</div>
+
+</form>
+
+*@

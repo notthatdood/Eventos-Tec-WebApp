@@ -1,33 +1,36 @@
-﻿using LayoutTemplateWebApp.Data;
-using LayoutTemplateWebApp.Model;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using LayoutTemplateWebApp.Model;
+using LayoutTemplateWebApp.Data;
 using System.Text.Json;
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+
 
 namespace LayoutTemplateWebApp.Pages
 {
-    public class PrivacyModel : PageModel
-    {
+    public class Option3Model : PageModel
 
+    {
         private readonly IHttpClientFactory _clientFactory;
         public string role { get; set; }
 
         public List<UserAPIModel> PersonList { get; set; }
-
         public string RawJsonData { get; set; }
-        private readonly ILogger<PrivacyModel> _logger;
+        private readonly ApplicationDbContext _db; // Reemplaza "ApplicationDbContext" con el contexto de tu base de datos
 
-        public PrivacyModel(ILogger<PrivacyModel> logger, IHttpClientFactory clientFactory)
+
+        public Option3Model(ApplicationDbContext db, IHttpClientFactory clientFactory)
+
         {
-            _logger = logger;
+            _db = db;
             _clientFactory = clientFactory;
-        }
-
-        public async Task OnGet2()
-        {
-            role = HttpContext.Session.GetString("role");
-            PersonList = await LoadPersonsData();
-
         }
 
         public async Task<List<UserAPIModel>> LoadPersonsData()
@@ -58,8 +61,22 @@ namespace LayoutTemplateWebApp.Pages
             return personList;
         }
 
-        public void OnGet()
+
+
+        public async Task role_setup()
         {
+            var events = _db.Event.ToList();
+            var facilities = _db.Facility.ToList();
+            role = HttpContext.Session.GetString("role");
+            PersonList = await LoadPersonsData();
+            Console.WriteLine($"Role: {role}");
+        }
+        public async Task OnGet()
+        {
+            role_setup();
+            // Recuperar eventos de la base de datos
+
+
         }
     }
 }

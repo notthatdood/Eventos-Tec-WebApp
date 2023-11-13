@@ -20,6 +20,7 @@ namespace LayoutTemplateWebApp.Pages
         public string RawJsonData { get; set; }
         private readonly ApplicationDbContext _db;
 
+
         public Dictionary<int, List<Facility>> GroupedFacilities { get; set; }
 
         public List<FacilityType> Ftypes { get; set; }
@@ -79,9 +80,9 @@ namespace LayoutTemplateWebApp.Pages
             var facilities = _db.Facility.ToList();
             var types = _db.FacilityType.ToList();
 
-            // Agrupar instalaciones por idBuildingType
+            // Agrupar instalaciones por idFacilityType
             GroupedFacilities = facilities
-                 .GroupBy(f => f.idBuildingType)
+                 .GroupBy(f => f.idFacilityType)
                 .ToDictionary(g => g.Key, g => g.ToList());
 
             Ftypes = types;
@@ -110,19 +111,20 @@ namespace LayoutTemplateWebApp.Pages
                     };
 
                     // Agrega la imagen a la base de datos
-                    await _db.Images.AddAsync(image);
+                    await _db.Image.AddAsync(image);
 
                     // Guarda los cambios en la base de datos
                     await _db.SaveChangesAsync();
                 }
             }
             myEvent.organizer = HttpContext.Session.GetString("email");
-            myEvent.idCapacityType = 2;
+            //myEvent.idCapacityType = 2;
             myEvent.idEventState = 1;
+            myEvent.idImage = "url";
             Debug.WriteLine("Fecha del formulario: " + myEvent.idFacility);
             await _db.Event.AddAsync(myEvent);
             await _db.SaveChangesAsync();
-            return RedirectToPage("/Option1");
+            return RedirectToPage("/Eventos/Calendario");
         }
     }
 }

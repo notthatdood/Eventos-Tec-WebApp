@@ -1,0 +1,111 @@
+﻿@page
+@model LayoutTemplateWebApp.Pages.EventosCRUD.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    var userRole = @Model.role;
+    string layoutName;
+    switch (userRole)
+    {
+        case "1616": // Estudiante
+            layoutName = "_LayoutEstudiante";
+            break;
+        case "1717": // Profesor
+            layoutName = "_LayoutProfesor";
+            break;
+        case "1919": // Organizador
+            layoutName = "_LayoutOrganizador";
+            break;
+        default:
+            layoutName = "_ErrorLayout";
+            break;
+    }
+
+    Layout = layoutName;
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Event[0].name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event[0].date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event[0].description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event[0].organizer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event[0].capacityNumber)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Event[0].entryCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event[0].idImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event[0].EventState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event[0].EventType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event[0].Facility)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Event) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.organizer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capacityNumber)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.entryCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventState.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventType.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Facility.name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.idEvent">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.idEvent">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.idEvent">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

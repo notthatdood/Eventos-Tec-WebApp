@@ -24,16 +24,17 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     @{
-                        var option1IsActive = Context.Request.Path.Value.Contains("/Option1");
+                        var option1IsActive = Context.Request.Path.Value.Contains("/Eventos/Calendario");
                         var option2IsActive = Context.Request.Path.Value.Contains("/Option2");
                         var option3IsActive = Context.Request.Path.Value.Contains("/Option3");
                         var option4IsActive = Context.Request.Path.Value.Contains("/Option4");
+                        var option5IsActive = Context.Request.Path.Value.Contains("/Facilities/Index");
 
                     }
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link @(option1IsActive ? "active" : "")" asp-area="" asp-page="/Option1">Calendario de Eventos</a>
+                            <a class="nav-link @(option1IsActive ? "active" : "")" asp-area="" asp-page="/Eventos/Calendario">Calendario de Eventos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link @(option2IsActive ? "active" : "")" asp-area="" asp-page="/Option2">Mis próximos eventos</a>
@@ -43,6 +44,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link @(option4IsActive ? "active" : "")" asp-area="" asp-page="/Option4">Crear nuevo evento</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(option5IsActive ? "active" : "")" asp-area="" asp-page="/Facilities/Index"> </a>
                         </li>
                     </ul>
                 </div>

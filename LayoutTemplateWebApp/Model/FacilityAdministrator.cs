@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace LayoutTemplateWebApp.Model
 {
@@ -9,6 +10,11 @@ namespace LayoutTemplateWebApp.Model
 
         [Required]
         [MaxLength(255)]
+        [DisplayName("Correo")]
         public string email { get; set; }
-    }
+
+
+		// navigation properties
+		public ICollection<Facility> facilities { get; set; }
+	}
 }

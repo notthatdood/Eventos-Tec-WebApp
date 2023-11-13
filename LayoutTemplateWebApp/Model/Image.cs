@@ -1,11 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LayoutTemplateWebApp.Model
+public class Image
 {
-    public class Image
-    {
-        [Key]
-        public int idImage { get; set; }
-        public string url { get; set; }
-    }
+	[Key]
+	public int idImage { get; set; }
+
+	[Required]
+	[MaxLength(255)]
+	public string url { get; set; }
+
+	[Required]
+	[MaxLength(50)]
+	public string alternative_text { get; set; }
+
+	[Required]
+	[MaxLength(250)]
+	public string descriptive_text { get; set; }
 }

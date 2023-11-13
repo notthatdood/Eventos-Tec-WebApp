@@ -12,9 +12,10 @@ namespace LayoutTemplateWebApp.Model
         [MaxLength(255)]
         public string description { get; set; }
 
-        public string coordinates { get; set; }
-
         public bool inCampus { get; set; }
-    }
+
+		// navigation properties
+		public ICollection<Facility> facilities { get; set; }
+	}
 
 }

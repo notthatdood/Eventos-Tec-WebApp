@@ -1,40 +1,32 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using LayoutTemplateWebApp.Model;
+using Microsoft.EntityFrameworkCore;
 using LayoutTemplateWebApp.Data;
+using LayoutTemplateWebApp.Model;
 using System.Text.Json;
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 
-
-namespace LayoutTemplateWebApp.Pages
+namespace LayoutTemplateWebApp.EventosTemp
 {
-    public class Option1Model : PageModel
-
+    public class IndexModel : PageModel
     {
+        private readonly LayoutTemplateWebApp.Data.ApplicationDbContext _context;
         private readonly IHttpClientFactory _clientFactory;
         public string role { get; set; }
 
         public List<UserAPIModel> PersonList { get; set; }
 
         public string RawJsonData { get; set; }
-        private readonly ApplicationDbContext _db; // Reemplaza "ApplicationDbContext" con el contexto de tu base de datos
+        private readonly ApplicationDbContext _db;
 
-        public Dictionary<DateTime, List<Event>> GroupedEvents { get; set; }
-
-        public Option1Model(ApplicationDbContext db, IHttpClientFactory clientFactory)
-
+        public IndexModel(LayoutTemplateWebApp.Data.ApplicationDbContext context, IHttpClientFactory clientFactory)
         {
-            _db = db;
+            _context = context;
             _clientFactory = clientFactory;
         }
-
         public async Task<List<UserAPIModel>> LoadPersonsData()
         {
             var client = _clientFactory.CreateClient();
@@ -63,20 +55,20 @@ namespace LayoutTemplateWebApp.Pages
             return personList;
         }
 
-        public async Task OnGet()
+        public IList<Facility> Facility { get;set; } = default!;
+
+        public async Task OnGetAsync()
         {
-            // Recuperar eventos de la base de datos
-            var events = _db.Event.ToList();
-
-
-            // Agrupar eventos por fecha
-            GroupedEvents = events
-                .GroupBy(e => e.date.Date)
-                .ToDictionary(g => g.Key, g => g.ToList());
-
             role = HttpContext.Session.GetString("role");
             PersonList = await LoadPersonsData();
             Console.WriteLine($"Role: {role}");
+            if (_context.Facility != null)
+            {
+                Facility = await _context.Facility
+                .Include(f => f.FacilityAdministrator)
+                .Include(f => f.FacilityType)
+                .Include(f => f.Location).ToListAsync();
+            }
         }
     }
 }
