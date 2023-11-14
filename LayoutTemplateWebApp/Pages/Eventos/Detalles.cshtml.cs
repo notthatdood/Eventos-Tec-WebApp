@@ -14,19 +14,25 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using System.Linq.Expressions;
+using System.Net.Mail;
+using System.Net;
 
 namespace LayoutTemplateWebApp.Pages.Eventos
 {
     public class DetallesModel : PageModel
     {
+        private readonly LayoutTemplateWebApp.Data.ApplicationDbContext _context;
         private readonly IHttpClientFactory _clientFactory;
         public string role { get; set; }
         public List<UserAPIModel> PersonList { get; set; }
         public string RawJsonData { get; set; }
         private readonly ApplicationDbContext _db;
+        public bool showFullyBooked = false;
 
-        public Event Event { get; set; }
-		public Comment Comment { get; set; } // Aqui guardo el post de comentario nuevo
+        public Event Event { get; set; } = default!;
+        public Comment Comment { get; set; } // Aqui guardo el post de comentario nuevo
 
 		public Event getEvent(int id)
 		{
@@ -46,11 +52,13 @@ namespace LayoutTemplateWebApp.Pages.Eventos
 			return evento;
         }
 
-        public async Task OnGetAsync(int id)
+        public async Task OnGet(int id)
 		{
+            Response.Cookies.Append("currentEventId", id.ToString());
             role = HttpContext.Session.GetString("role");
             PersonList = await LoadPersonsData();
             Event = getEvent(id);
+            
 
 
             //Event = _db.Facility.FirstOrDefault(u => u.idFacility == Event.idFacility);
@@ -61,9 +69,10 @@ namespace LayoutTemplateWebApp.Pages.Eventos
             //Event.EventState = _db.EventState.Find(Event.idEventState);
         }
 
-        public DetallesModel(ApplicationDbContext db, IHttpClientFactory clientFactory)
+        public DetallesModel(ApplicationDbContext db, IHttpClientFactory clientFactory, LayoutTemplateWebApp.Data.ApplicationDbContext context)
 		{
-			_db = db;
+            _context = context;
+            _db = db;
 			_clientFactory = clientFactory;
 		}
 
@@ -85,8 +94,8 @@ namespace LayoutTemplateWebApp.Pages.Eventos
         public async Task<IActionResult> OnPostCommentAsync(int id)
 
         {
-			Console.WriteLine("Estoy aquí");
             Event = getEvent(id);
+
             if (!ModelState.IsValid || _db.Event == null || Event == null)
             {
                 return RedirectToPage("./Calendario");
@@ -128,5 +137,58 @@ namespace LayoutTemplateWebApp.Pages.Eventos
 			}
 			return personList;
 		}
-	}
+
+        private bool EventExists(int id)
+        {
+            return (_context.Event?.Any(e => e.idEvent == id)).GetValueOrDefault();
+        }
+
+        public async Task<IActionResult> OnPostReservar()
+        {
+            string id = Request.Cookies["currentEventId"];
+            Event = getEvent(Int32.Parse(id));
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            
+            if (Event.capacityNumber == 0)
+            {
+                showFullyBooked = true;
+                return null;
+
+            }
+            Event.capacityNumber = Event.capacityNumber - 1;
+            _context.Attach(Event).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EventExists(Event.idEvent))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("bibliotecmail@gmail.com", "pubrnylofjmuqmff"),
+                EnableSsl = true,
+            };
+            string email = HttpContext.Session.GetString("email");
+            Random rand = new Random();
+            int randomAccessCode = rand.Next(111111, 999999);
+            string message = "Confirmación de reservación para el evento: " + Event.name + "\n" + "Su código de acceso es: " + randomAccessCode.ToString();
+            smtpClient.Send("bibliotecmail@gmail.com", email, "Confirmación de Reservación", message);
+            return RedirectToPage("Calendario");
+        }
+    }
 }

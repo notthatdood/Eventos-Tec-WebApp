@@ -19,7 +19,7 @@ namespace LayoutTemplateWebApp.Pages.EventosCRUD
             _context = context;
         }
 
-      public Event Event { get; set; } = default!; 
+        public Event Event { get; set; } = default!; 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
