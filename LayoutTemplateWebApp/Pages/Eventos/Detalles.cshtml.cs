@@ -16,6 +16,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.Linq.Expressions;
+using System.Net.Mail;
+using System.Net;
 
 namespace LayoutTemplateWebApp.Pages.Eventos
 {
@@ -167,7 +169,17 @@ namespace LayoutTemplateWebApp.Pages.Eventos
                     throw;
                 }
             }
-
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("bibliotecmail@gmail.com", "pubrnylofjmuqmff"),
+                EnableSsl = true,
+            };
+            string email = HttpContext.Session.GetString("email");
+            Random rand = new Random();
+            int randomAccessCode = rand.Next(111111, 999999);
+            string message = "Confirmación de reservación para el evento: " + Event.name + "\n" + "Su código de acceso es: " + randomAccessCode.ToString();
+            smtpClient.Send("bibliotecmail@gmail.com", email, "Confirmación de Reservación", message);
             return RedirectToPage("Calendario");
         }
     }
