@@ -50,9 +50,22 @@ var idActual = Model.Event.idEvent;
     <div class="row">
         <div class="col-12">
             <form method="post">
-                <button type="submit" asp-page-handler="Reservar" style="background-color: #E6F2FB; border: none;" data-bs-toggle="modal" data-bs-target="#report">Asistiré</button>
-                <button type="submit" asp-page-handler="MarkEvent" style="background-color: #E6F2FB; border: none;" data-bs-toggle="modal" data-bs-target="#report">Me Interesa</button>
+                @{
+                    if (Model.showFullyBooked == false)
+                    {
+                        <button type="submit" asp-page-handler="Reservar" style="background-color: #E6F2FB; border: none;" data-bs-toggle="modal" data-bs-target="#report">Asistiré</button>
+                        <button type="submit" asp-page-handler="MarkEvent" style="background-color: #E6F2FB; border: none;" data-bs-toggle="modal" data-bs-target="#report">Me Interesa</button>
+                    }
+                }
             </form>
+            @{
+                if (Model.showFullyBooked == true)
+                {
+                    <div class="mb-3">
+                        <label>El evento está completamente reservado</label>
+                    </div>
+                }
+            }
         </div>
     </div>
 </div>

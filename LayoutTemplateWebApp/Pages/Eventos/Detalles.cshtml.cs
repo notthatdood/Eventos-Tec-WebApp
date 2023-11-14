@@ -29,6 +29,7 @@ namespace LayoutTemplateWebApp.Pages.Eventos
         public List<UserAPIModel> PersonList { get; set; }
         public string RawJsonData { get; set; }
         private readonly ApplicationDbContext _db;
+        public bool showFullyBooked = false;
 
         public Event Event { get; set; } = default!;
         public Comment Comment { get; set; } // Aqui guardo el post de comentario nuevo
@@ -151,6 +152,13 @@ namespace LayoutTemplateWebApp.Pages.Eventos
                 return Page();
             }
 
+            
+            if (Event.capacityNumber == 0)
+            {
+                showFullyBooked = true;
+                return null;
+
+            }
             Event.capacityNumber = Event.capacityNumber - 1;
             _context.Attach(Event).State = EntityState.Modified;
 
