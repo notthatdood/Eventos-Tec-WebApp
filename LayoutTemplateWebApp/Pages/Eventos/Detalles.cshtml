@@ -47,19 +47,15 @@ var idActual = Model.Event.idEvent;
 <div class="d-block p-2 bg-light text-black mb-5 col-4">@Model.Event.EventState.Name</div>
     <div class="d-block p-2 bg-primary text-white col-4">Tipo de Evento: </div>
 <div class="d-block p-2 bg-light text-black mb-5 col-4">@Model.Event.EventType.name</div>
-    @*
     <div class="row">
-               <div class="col-12">
-                   
-                   <button type="button" class="btn btn-primary col-2">Asistiré</button>
-                   <button type="button" class="btn btn-primary col-2">Me interesa</button>
-                   
-               </div>
+        <div class="col-12">
+            <form method="post">
+                <button type="submit" asp-page-handler="Reservar" style="background-color: #E6F2FB; border: none;" data-bs-toggle="modal" data-bs-target="#report">Asistiré</button>
+                <button type="submit" asp-page-handler="MarkEvent" style="background-color: #E6F2FB; border: none;" data-bs-toggle="modal" data-bs-target="#report">Me Interesa</button>
+            </form>
+        </div>
     </div>
-    *@
 </div>
-
-
 
 @{
 var contador = 0;
