@@ -30,6 +30,8 @@ namespace LayoutTemplateWebApp.Pages.Eventos
 
         public Dictionary<DateTime, List<Event>> GroupedEvents { get; set; }
 
+        public List<Activity> Activities { get; set; }
+
         public CalendarioModel(ApplicationDbContext db, IHttpClientFactory clientFactory)
 
         {
@@ -80,6 +82,7 @@ namespace LayoutTemplateWebApp.Pages.Eventos
             // Recuperar eventos de la base de datos
             var events = _db.Event.ToList();
             var facilities = _db.Facility.ToList();
+
 
 
             // Agrupar eventos por fecha

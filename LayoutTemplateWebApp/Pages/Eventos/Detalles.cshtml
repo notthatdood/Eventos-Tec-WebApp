@@ -58,6 +58,29 @@ var idActual = Model.Event.idEvent;
     </div>
     *@
 </div>
+<div class="container mt-4">
+    <h2>Lista de Actividades</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Actividad</th>
+                <th>Descripción</th>
+                <th>Capacidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var actividad in Model.Event.Activities)
+            {
+                <tr>
+                    <td>@actividad.name</td>
+                    <td>@actividad.description</td>
+                    <td>@actividad.capacity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
 
 
 

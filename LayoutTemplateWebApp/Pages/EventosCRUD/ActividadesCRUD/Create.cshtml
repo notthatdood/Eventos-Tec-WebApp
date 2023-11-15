@@ -1,0 +1,46 @@
+﻿@page
+@model LayoutTemplateWebApp.Pages.EventosCRUD.ActividadesCRUD.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crear actividad</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Activity.name" class="control-label"></label>
+                <input asp-for="Activity.name" class="form-control" />
+                <span asp-validation-for="Activity.name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Activity.description" class="control-label"></label>
+                <input asp-for="Activity.description" class="form-control" />
+                <span asp-validation-for="Activity.description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Activity.capacity" class="control-label"></label>
+                <input asp-for="Activity.capacity" class="form-control" />
+                <span asp-validation-for="Activity.capacity" class="text-danger"></span>
+            </div>
+            <!-- Campo oculto para el id del evento -->
+            <input type="hidden" asp-for="Activity.idEvent" value="@Model.EventId" />
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="../Index">Devuelta a eventos</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

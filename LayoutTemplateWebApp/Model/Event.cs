@@ -56,6 +56,7 @@ namespace LayoutTemplateWebApp.Model
 
 
         public ICollection<Comment>? Comments { get; set; }
+        public ICollection<Activity>? Activities { get;  set; }
 
         // IMAGE
 

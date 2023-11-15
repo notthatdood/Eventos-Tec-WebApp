@@ -27,7 +27,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Crear nuevo evento</a>
 </p>
 <table class="table">
     <thead>
@@ -101,9 +101,12 @@
                 @Html.DisplayFor(modelItem => item.Facility.name)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.idEvent">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.idEvent">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.idEvent">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.idEvent">Editar</a> |
+                <a asp-page="./Details" asp-route-id="@item.idEvent">Detalles</a> |
+                <a asp-page="./Delete" asp-route-id="@item.idEvent">Borrar</a>|
+                <a asp-page="./ActividadesCRUD/Create" asp-route-id="@item.idEvent">Crear actividad</a>|
+                <a asp-page="./ActividadesCRUD/Index" asp-route-id="@item.idEvent">Gestionar Actividades</a>|
+
             </td>
         </tr>
 }

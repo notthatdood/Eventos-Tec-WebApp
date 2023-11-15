@@ -20,6 +20,8 @@ namespace LayoutTemplateWebApp.Data
 
         public DbSet<Facility> Facility { get; set; }
 
+        public DbSet<Activity> Activity { get; set; }
+
         public DbSet<FacilityType> FacilityType { get; set; }
         public DbSet<Location> Location { get; set; }
         public DbSet<Model.Constraint> Constraint { get; set; }
@@ -81,6 +83,9 @@ namespace LayoutTemplateWebApp.Data
 
             modelBuilder.Entity<Comment>().HasOne(c => c.Event).
                 WithMany(e=> e.Comments).HasForeignKey(k => k.idEvent);
+
+            modelBuilder.Entity<Activity>().HasOne(c => c.Event).
+                WithMany(e=> e.Activities).HasForeignKey(k => k.idEvent);
 
 
         }

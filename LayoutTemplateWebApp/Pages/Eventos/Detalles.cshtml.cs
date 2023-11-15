@@ -26,6 +26,9 @@ namespace LayoutTemplateWebApp.Pages.Eventos
         private readonly ApplicationDbContext _db;
 
         public Event Event { get; set; }
+
+        public List<Model.Activity> Activities { get; set; }
+        
 		public Comment Comment { get; set; } // Aqui guardo el post de comentario nuevo
 
 		public Event getEvent(int id)
@@ -42,8 +45,9 @@ namespace LayoutTemplateWebApp.Pages.Eventos
             evento.EventState = _db.EventState.FirstOrDefault(u => u.idEventState == idEventStateEvent);
             evento.Comments = new List<Comment>();
             evento.Comments = _db.Comment.Where(c => c.idEvent == id).ToList();
+			evento.Activities = _db.Activity.Where(c => c.idEvent == id).ToList();
 
-			return evento;
+            return evento;
         }
 
         public async Task OnGetAsync(int id)

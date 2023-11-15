@@ -41,7 +41,6 @@ namespace LayoutTemplateWebApp.Pages.EventosCRUD
 
             _context.Event.Add(Event);
             await _context.SaveChangesAsync();
-
             return RedirectToPage("./Index");
         }
     }

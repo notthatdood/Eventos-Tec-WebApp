@@ -9,133 +9,153 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = LayoutTemplateWebApp
 build_property.RootNamespace = LayoutTemplateWebApp
-build_property.ProjectDir = C:\Users\andre\OneDrive\Escritorio\Compi\Proyecto\Eventos-Tec-WebApp\LayoutTemplateWebApp\
+build_property.ProjectDir = C:\Users\Raul\Desktop\ProyectoDiseno\GestionEventosAP\Eventos-Tec-WebApp\LayoutTemplateWebApp\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\andre\OneDrive\Escritorio\Compi\Proyecto\Eventos-Tec-WebApp\LayoutTemplateWebApp
+build_property.MSBuildProjectDirectory = C:\Users\Raul\Desktop\ProyectoDiseno\GestionEventosAP\Eventos-Tec-WebApp\LayoutTemplateWebApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/CrearUsuario.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/CrearUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXJVc3VhcmlvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Estudiante/BienvenidaEstudiante.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Estudiante/BienvenidaEstudiante.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0dWRpYW50ZVxCaWVudmVuaWRhRXN0dWRpYW50ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/Create.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/ActividadesCRUD/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc0NSVURcQWN0aXZpZGFkZXNDUlVEXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/ActividadesCRUD/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc0NSVURcQWN0aXZpZGFkZXNDUlVEXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/ActividadesCRUD/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc0NSVURcQWN0aXZpZGFkZXNDUlVEXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/ActividadesCRUD/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc0NSVURcQWN0aXZpZGFkZXNDUlVEXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/ActividadesCRUD/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc0NSVURcQWN0aXZpZGFkZXNDUlVEXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc0NSVURcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/Delete.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc0NSVURcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/Details.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc0NSVURcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/Edit.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc0NSVURcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/Index.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/EventosCRUD/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc0NSVURcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Eventos/Calendario.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Eventos/Calendario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xDYWxlbmRhcmlvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Eventos/Detalles.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Eventos/Detalles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xEZXRhbGxlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Facilities/Create.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Facilities/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmFjaWxpdGllc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Facilities/Delete.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Facilities/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmFjaWxpdGllc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Facilities/Edit.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Facilities/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmFjaWxpdGllc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Facilities/Index.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Facilities/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmFjaWxpdGllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Index.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Login.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Option2.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Option2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3B0aW9uMi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Option3.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Option3.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3B0aW9uMy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Option4.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Option4.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3B0aW9uNC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Organizador/BienvenidaOrganizador.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Organizador/BienvenidaOrganizador.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JnYW5pemFkb3JcQmllbnZlbmlkYU9yZ2FuaXphZG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Organizador/SolicitudesEventos.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Organizador/SolicitudesEventos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JnYW5pemFkb3JcU29saWNpdHVkZXNFdmVudG9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Plantilla.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Plantilla.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxhbnRpbGxhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Profesor/BienvenidaProfesor.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Profesor/BienvenidaProfesor.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmVzb3JcQmllbnZlbmlkYVByb2Zlc29yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Profile.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Shared/_ErrorLayout.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Shared/_ErrorLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9FcnJvckxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Shared/_LayoutEstudiante.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Shared/_LayoutEstudiante.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRFc3R1ZGlhbnRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Shared/_LayoutOrganizador.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Shared/_LayoutOrganizador.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRPcmdhbml6YWRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Shared/_LayoutProfesor.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Shared/_LayoutProfesor.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRQcm9mZXNvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/_ViewImports.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/_ViewStart.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/OneDrive/Escritorio/Compi/Proyecto/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Shared/_Layout.cshtml]
+[C:/Users/Raul/Desktop/ProyectoDiseno/GestionEventosAP/Eventos-Tec-WebApp/LayoutTemplateWebApp/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-1wnq3fk48m

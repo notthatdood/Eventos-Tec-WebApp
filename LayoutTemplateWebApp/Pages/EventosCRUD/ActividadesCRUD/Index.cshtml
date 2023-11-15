@@ -1,0 +1,48 @@
+﻿@page
+@model LayoutTemplateWebApp.Pages.EventosCRUD.ActividadesCRUD.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Activity[0].name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activity[0].description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activity[0].capacity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Activity) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capacity)
+            </td>
+            <td>
+                    <a asp-page="./Edit" asp-route-id="@item.idActivity" asp-route-eventId="@item.idEvent">Editar</a> |
+                    <a asp-page="./Details" asp-route-id="@item.idActivity" asp-route-eventId="@item.idEvent">Detalles</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.idActivity" asp-route-eventId="@item.idEvent">Borrar</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a asp-page="../Index">Devuelta a eventos</a>
+</div>
