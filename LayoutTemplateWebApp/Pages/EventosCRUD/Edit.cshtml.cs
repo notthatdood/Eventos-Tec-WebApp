@@ -8,6 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LayoutTemplateWebApp.Data;
 using LayoutTemplateWebApp.Model;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
+using System.Diagnostics;
+using Newtonsoft.Json;
 
 namespace LayoutTemplateWebApp.Pages.EventosCRUD
 {
@@ -46,6 +51,7 @@ namespace LayoutTemplateWebApp.Pages.EventosCRUD
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            Debug.WriteLine("kachika");
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -68,7 +74,56 @@ namespace LayoutTemplateWebApp.Pages.EventosCRUD
                     throw;
                 }
             }
+            
+            using var client = new HttpClient();
+            var response = await client.GetAsync("http://sistema-tec.somee.com/api/users");
+            var result = await response.Content.ReadAsStringAsync();
+            List<UserAPIModel> personList = JsonConvert.DeserializeObject<List<UserAPIModel>>(result); //new List<UserAPIModel>();
+            Random rand = new Random();
+            string email;
+            string message;
+            List<string> ignoreMailList = new List<string>
+            {
+                "chacalerks@estudiantec.cr",
+                "curio@estudiantec.cr",
+                "dagger@estudiantec.cr",
+                "dani.alvarado@estudiantec.cr",
+                "fermurillo04@estudiantec.cr",
+                "gromero0907@estudiantec.cr",
+                "jenniferespinach104@estudiantec.cr",
+                "jhonnsc@estudiantec.cr",
+                "ldfozamis@estudiantec.cr",
+                "lorcacris13@estudiantec.cr",
+                "machacon@itcr.ac.cr",
+                "machobg08@estudiantec.cr",
+                "mariolara.21@estudiantec.cr",
+                "svega106@estudiantec.cr",
+                "thecsarbeat@estudiantec.cr"
+            };
 
+            
+            foreach (UserAPIModel user in personList) {
+                if (!ignoreMailList.Contains(user.Email)){
+                    var smtpClient = new SmtpClient("smtp.gmail.com")
+                    {
+                        Port = 587,
+                        Credentials = new NetworkCredential("bibliotecmail@gmail.com", "pubrnylofjmuqmff"),
+                        EnableSsl = true,
+                    };
+                    //email = HttpContext.Session.GetString("email");
+
+                    message = "Se ha modificado el evento: " + Event.name;
+                    try
+                    {
+                        smtpClient.Send("bibliotecmail@gmail.com", user.Email, "Modificación de evento", message);
+                    }
+                    catch
+                    {
+                        Debug.WriteLine("no existe el correo");
+                    }
+                    
+                }
+            }
             return RedirectToPage("./Index");
         }
 
