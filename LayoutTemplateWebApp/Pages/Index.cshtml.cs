@@ -26,38 +26,14 @@ namespace LayoutTemplateWebApp.Pages
         }
 
 
-        public async Task OnGetAsync(string email)
+        public async Task<RedirectToPageResult> OnGetAsync(string email)
         {
 
             string id = HttpContext.Session.GetString("email");
 
             if (string.IsNullOrEmpty(email))
             {
-                //check for session
-                if (string.IsNullOrEmpty(id))
-                {
-                    Email = "Default or Anonymous User";
-                    Response.Redirect("/ErrorPage");
-                }
-                // Now make the asynchronous call to the external API
-                else if (HttpContext.Session.GetString("role") == "1616")
-                {
-                    Response.Redirect("/Estudiante/BienvenidaEstudiante");
-                }
-                else if (HttpContext.Session.GetString("role") == "1717")
-                {
-                    Response.Redirect("/Profesor/BienvenidaProfesor");
-                }
-                else if (HttpContext.Session.GetString("role") == "1919")
-                {
-                    Response.Redirect("/Organizador/BienvenidaOrganizador");
-                }
-                else
-                {
-                    Response.Redirect("/ErrorPage");
-                }
-
-
+                return RedirectToPage("Login");
             }
             else
             {
@@ -138,7 +114,7 @@ namespace LayoutTemplateWebApp.Pages
             {
                 Response.Redirect("/ErrorPage");
             }
-
+            return null;
         }
     }
 }

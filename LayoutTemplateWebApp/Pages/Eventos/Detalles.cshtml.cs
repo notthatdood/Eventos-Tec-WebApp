@@ -31,16 +31,12 @@ namespace LayoutTemplateWebApp.Pages.Eventos
         private readonly ApplicationDbContext _db;
         public bool showFullyBooked = false;
 
-<<<<<<< HEAD
-        public Event Event { get; set; }
-
         public List<Model.Activity> Activities { get; set; }
         
 		public Comment Comment { get; set; } // Aqui guardo el post de comentario nuevo
-=======
+
         public Event Event { get; set; } = default!;
-        public Comment Comment { get; set; } // Aqui guardo el post de comentario nuevo
->>>>>>> cada689edcee747c80b2fe42bdea5ebf62c570bb
+
 
 		public Event getEvent(int id)
 		{
